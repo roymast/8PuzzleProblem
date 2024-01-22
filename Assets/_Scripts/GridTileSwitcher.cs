@@ -7,7 +7,7 @@ using UnityEngine;
 public class GridTileSwitcher : MonoBehaviour
 {
     [SerializeField] GridManager gridManager;
-    public System.Action OnSwitchSucceeded;
+    public static System.Action OnSwitchSucceeded;
 
     private void Start()
     {        

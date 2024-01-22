@@ -7,16 +7,20 @@ public class GridManager : MonoBehaviour
     public Tile[,] Grid;
     [SerializeField] int gridSize;
     
-    [SerializeField] PuzzleGridGenerator gridGenerator;
-    [SerializeField] GridTileSwitcher tileSwitcher;
-    [SerializeField] GameObject GameOverScreen;
+    [SerializeField] PuzzleGridGenerator gridGenerator;    
+    
+    public static System.Action OnGameOver;
+
     // Start is called before the first frame update
     void Start()
     {
         gridSize = GridSizeSelector.GridSize;
-        tileSwitcher.OnSwitchSucceeded += CheckForGameOver;
+        GridTileSwitcher.OnSwitchSucceeded += CheckForGameOver;
         Grid = gridGenerator.Generate(gridSize);
-        Debug.Log($"Solved? {IsSolved()}");
+    }
+    private void OnDestroy()
+    {
+        GridTileSwitcher.OnSwitchSucceeded -= CheckForGameOver;
     }
     public void PrintGrid()
     {
@@ -33,9 +37,11 @@ public class GridManager : MonoBehaviour
     }
     public void CheckForGameOver()
     {
-        if (!IsSolved())
-            return;
-        GameOverScreen.SetActive(true);
+        if (IsSolved())
+        {
+            Debug.Log("solved");
+            OnGameOver?.Invoke();
+        }
     }
 
     public bool IsSolved()

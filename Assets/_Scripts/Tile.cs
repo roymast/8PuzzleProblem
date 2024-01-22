@@ -5,6 +5,7 @@ using TMPro;
 
 public class Tile : MonoBehaviour
 {
+    static GameManager gameManager;
     public static Vector2 tileSize;    
 
     [SerializeField] private int value;
@@ -18,10 +19,15 @@ public class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         if (!IsEmpty)
-            OnTilePress?.Invoke(pos);
+        {
+            if(gameManager.IsGameRunning && !gameManager.IsGameEnd)
+                OnTilePress?.Invoke(pos);
+        }
     }    
     public void Init(int val, int x, int y)
-    {
+    {        
+        if(gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
         value = val;
         pos = new Vector2(x, y);
         TileText.text = val == 0 ? "":val.ToString();

@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class GridSizeSelector : MonoBehaviour
 {
-    public static int GridSize = 4;
+    public static int GridSize = 3;
     public TextMeshProUGUI GridSizeText;
     private void Start()
     {
