@@ -19,9 +19,11 @@ public class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         if (!IsEmpty)
-        {
-            if(gameManager.IsGameRunning && !gameManager.IsGameEnd)
-                OnTilePress?.Invoke(pos);
+        {            
+            if (gameManager.IsGameRunning && !gameManager.IsGameEnd)
+            {
+                OnTilePress?.Invoke(pos);                
+            }
         }
     }    
     public void Init(int val, int x, int y)

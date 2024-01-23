@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         IsGameRunning = true;
         IsGameEnd = false;
+        Time.timeScale = 1;
         GridManager.OnGameOver += GameOver;
     }
     private void OnDestroy()
