@@ -28,9 +28,16 @@ public static class PlayerData
     {
         get { return PlayerPrefs.GetInt(POINTS); }
         set { if (value > 0) PlayerPrefs.SetInt(POINTS, value); }
+    }    
+    public static int BestTimeVal { get { int.TryParse(PlayerPrefs.GetString(BEST_TIME).Split(SEPERATOR)[0], out int v); return v; } }
+    public static int BestMovesVal { get { int.TryParse(PlayerPrefs.GetString(BEST_MOVES).Split(SEPERATOR)[0], out int v); return v; } }
+    public static void DeleteTimeAndMoves()
+    {
+        PlayerPrefs.DeleteKey(BEST_MOVES);
+        PlayerPrefs.DeleteKey(BEST_TIME);
     }
-
-    public static void TryUpdateBestScore(int time, int moves)
+    //return true if broke record
+    public static void UpdateBestTime(int time, int moves)
     {
         string bestTimeStr = PlayerPrefs.GetString(BEST_TIME);
         if (int.TryParse(bestTimeStr.Split(SEPERATOR)[0], out int bestTimeVal))
@@ -41,16 +48,18 @@ public static class PlayerData
         else
             PlayerPrefs.SetString(BEST_TIME, $"{time} {SEPERATOR} {moves}");
     }
-    public static void TryUpdateBestMoves(int time, int moves)
+
+    //return true if broke record
+    public static void UpdateBestMoves(int time, int moves)
     {
         string bestmovesStr = PlayerPrefs.GetString(BEST_MOVES);
         if (int.TryParse(bestmovesStr.Split(SEPERATOR)[0], out int bestMovesVal))
         {
-            if (bestMovesVal > moves)
-                PlayerPrefs.SetString(BEST_MOVES, $"{time} {SEPERATOR} {moves}");
+            if (bestMovesVal > moves)            
+                PlayerPrefs.SetString(BEST_MOVES, $"{time} {SEPERATOR} {moves}");                           
         }
-        else
-            PlayerPrefs.SetString(BEST_MOVES, $"{time} {SEPERATOR} {moves}");
+        else        
+            PlayerPrefs.SetString(BEST_MOVES, $"{time} {SEPERATOR} {moves}");                            
     }
     public static void AddPoints(int points)
     {
