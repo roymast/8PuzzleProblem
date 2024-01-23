@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         GameOverScreen.OnGameOver();
-        IsGameEnd = false;
+        IsGameEnd = true;
         IsGameRunning = false;
     }
 }
