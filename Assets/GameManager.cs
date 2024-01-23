@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         GridManager.OnGameOver -= GameOver;
-    }
-
+    }    
     private void GameOver()
     {
         GameOverScreen.OnGameOver();
         IsGameEnd = true;
         IsGameRunning = false;
+        PlayerData.AddPoints(GridSizeSelector.GridSize);//Add points as the size of the grid
     }
 }
