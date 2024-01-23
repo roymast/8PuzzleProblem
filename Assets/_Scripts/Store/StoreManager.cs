@@ -20,8 +20,7 @@ public class StoreManager : MonoBehaviour
         currentViewData = new TileViewData();
         StoreTilePrefabData.BuyButtonPressed += TryBuying;
         StoreTilePrefabData.UseButtonPressed += TryUseTile;
-
-        PlayerPrefs.DeleteAll();
+        
         UpdatePlayerPoints();
         string storeItemsBought = PlayerData.StoreItemsBought;
         string[] myStoreItemsSplit = storeItemsBought.Split(' ');        
