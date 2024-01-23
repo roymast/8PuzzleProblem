@@ -13,53 +13,41 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] Sprite SFXOn;
     [SerializeField] Sprite SFXOff;
     [SerializeField] Sprite MusicOn;
-    [SerializeField] Sprite MusicOff;
-
-    bool isSFXActive;
-    bool isMusicActive;
-    
-    public void ResumeGame()
-    {
-
-    }
+    [SerializeField] Sprite MusicOff;    
 
     public void ToggleMusic()
     {
-        isMusicActive = !isMusicActive;
-        SetActiveMusic(isMusicActive);
+        PlayerData.MusicActive = !PlayerData.MusicActive;        
+        SetActiveMusic(PlayerData.MusicActive);
     }
     public void ToggleSFX()
     {
-        isSFXActive = !isSFXActive;
-        SetActiveSFX(isSFXActive);
+        PlayerData.SFXActive = !PlayerData.SFXActive;        
+        SetActiveSFX(PlayerData.SFXActive);
     }
     public void SetActiveMusic(bool isActive)
     {
-        isMusicActive = isActive;
-        PlayerPrefs.SetInt("IsMusicActive", (isActive) ? 1 : 0);
+        PlayerData.MusicActive = isActive;                
         soundManager.SetActiveMusic(isActive);
         UpdateUI();
     }
     public void SetActiveSFX(bool isActive)
     {
-        isSFXActive = isActive;
-        PlayerPrefs.SetInt("IsSFXActive", (isActive) ? 1 : 0);
+        PlayerData.SFXActive = isActive;                
         soundManager.SetActiveSFX(isActive);
         UpdateUI();
     }
 
     void UpdateUI()
     {
-        SFXGameObject.sprite = isSFXActive ? SFXOn : SFXOff;
-        MusicGameObject.sprite = isMusicActive ? MusicOn : MusicOff;
+        SFXGameObject.sprite = PlayerData.SFXActive ? SFXOn : SFXOff;
+        MusicGameObject.sprite = PlayerData.MusicActive ? MusicOn : MusicOff;
     }
 
     // Start is called before the first frame update
     void Start()
-    {
-        isSFXActive = PlayerPrefs.GetInt("IsSFXActive") == 1 ? true : false;
-        isMusicActive = PlayerPrefs.GetInt("IsMusicActive") == 1 ? true : false;
-        SetActiveMusic(isMusicActive);
-        SetActiveSFX(isSFXActive);
+    {        
+        SetActiveMusic(PlayerData.MusicActive);
+        SetActiveSFX(PlayerData.SFXActive);
     }
 }
