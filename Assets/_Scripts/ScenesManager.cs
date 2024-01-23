@@ -8,6 +8,10 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene("Home");
     }
+    public void GoToStore()
+    {
+        SceneManager.LoadScene("Store");
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("Game");

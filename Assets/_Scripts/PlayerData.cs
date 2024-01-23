@@ -12,6 +12,19 @@ public static class PlayerData
     const string POINTS = "points";
     const string IS_MUSIC_ACTIVE = "IsMusicActive";
     const string IS_SFX_ACTIVE = "IsSFXActive";
+    const string CURRENT_STORE_TILE= "CurrentStoreTileItem";
+    const string STORE_ITEMS_BOUGHT = "MyCurrentTiles";
+
+    public static string CurrentStoreTileItem
+    {
+        get { return PlayerPrefs.GetString(CURRENT_STORE_TILE) == "" ? "Default" : PlayerPrefs.GetString(CURRENT_STORE_TILE); }
+        set { PlayerPrefs.SetString(CURRENT_STORE_TILE, value); }
+    }
+    public static string StoreItemsBought
+    {
+        get { return PlayerPrefs.GetString(STORE_ITEMS_BOUGHT) == "" ? "Default" : PlayerPrefs.GetString(STORE_ITEMS_BOUGHT); }
+        set { PlayerPrefs.SetString(STORE_ITEMS_BOUGHT, value); }
+    }
 
     public static bool MusicActive
     {
@@ -26,7 +39,7 @@ public static class PlayerData
     public static int PlayerPoints
     {
         get { return PlayerPrefs.GetInt(POINTS); }
-        set { if (value > 0) PlayerPrefs.SetInt(POINTS, value); }
+        set { if (value >= 0) PlayerPrefs.SetInt(POINTS, value); }
     }    
     public static int BestTimeVal { get { int.TryParse(PlayerPrefs.GetString(BEST_TIME).Split(SEPERATOR)[0], out int v); return v; } }
     public static int BestMovesVal { get { int.TryParse(PlayerPrefs.GetString(BEST_MOVES).Split(SEPERATOR)[0], out int v); return v; } }
@@ -68,8 +81,8 @@ public static class PlayerData
     {
         if (PlayerPoints < points)
             return false;
-
+        
         PlayerPoints -= points;
         return true;
-    }
+    }    
 }
