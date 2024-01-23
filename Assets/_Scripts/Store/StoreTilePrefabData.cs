@@ -7,12 +7,14 @@ using System;
 
 public class StoreTilePrefabData : MonoBehaviour
 {
-    [SerializeField] Image Rect;
-    [SerializeField] Image Fill;
-    [SerializeField] TextMeshProUGUI TileNumber;
+    public Image Rect;
+    public Image Fill;
+    public TextMeshProUGUI TileNumber;
 
     public TextMeshProUGUI NameLable;
     [SerializeField] TextMeshProUGUI UseOrBuyLable;
+
+    public TileViewData tileViewData;
 
     public static System.Action<StoreTilePrefabData> UseButtonPressed;
     public static System.Action<StoreTilePrefabData> BuyButtonPressed;
@@ -28,8 +30,13 @@ public class StoreTilePrefabData : MonoBehaviour
     public void Init(State initState)
     {
         CurrentState = initState;
+
+        tileViewData.FillColor = Fill.color;
+        tileViewData.RectColor= Rect.color;
+        tileViewData.TextColor = TileNumber.color;
+
         SetButtonText(initState);
-    }
+    }    
     public void OnButtonPressed()
     {
         if(CurrentState == State.CanUse)        

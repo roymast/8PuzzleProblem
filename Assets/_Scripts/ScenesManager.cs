@@ -6,6 +6,7 @@ public class ScenesManager : MonoBehaviour
 {
     public void GoToHome()
     {
+        Debug.Log("Home");
         SceneManager.LoadScene("Home");
     }
     public void GoToStore()

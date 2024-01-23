@@ -16,9 +16,11 @@ public class PuzzleGridGenerator : MonoBehaviour
             int[] lst = GridLogic.GetGrid(_gridSize);
         }
     }
+    
     // Start is called before the first frame update
     public Tile[,] Generate(int gridSize)
     {
+        TileViewData tileViewData = PlayerData.CurrentTileData;
         _gridSize = gridSize;
         int[] lst = GridLogic.GetGrid(gridSize);
         grid = new Tile[gridSize, gridSize];
@@ -32,7 +34,7 @@ public class PuzzleGridGenerator : MonoBehaviour
                 Tile newTile = Instantiate(tilePrefab, transform);
                 newTile.transform.localScale = new Vector2(tileSizeX, tileSizeY);
                 newTile.transform.position = new Vector2(y * tileSizeX, -x * tileSizeY);
-                newTile.Init(lst[x * gridSize + y], x, y);
+                newTile.Init(lst[x * gridSize + y], x, y, tileViewData);
                 grid[x, y] = newTile;
             }
         }

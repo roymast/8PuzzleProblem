@@ -187,6 +187,8 @@ MonoBehaviour:
   value: 0
   pos: {x: 0, y: 0}
   TileText: {fileID: 4255272568273332147}
+  Rect: {fileID: 5222892333691319414}
+  Fill: {fileID: 766174226585784822}
 --- !u!61 &-412380486646605211
 BoxCollider2D:
   m_ObjectHideFlags: 0
