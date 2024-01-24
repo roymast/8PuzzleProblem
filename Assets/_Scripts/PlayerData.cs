@@ -16,7 +16,13 @@ public static class PlayerData
     const string STORE_ITEMS_BOUGHT = "MyCurrentTiles";
 
     const string CURRENT_TILE_DATA = "CurrentTileData";
+    const string IS_NEED_TUTORIAL = "IsTutorialNeeded";
 
+    public static bool IsTutorialNeeded
+    {
+        get{ return PlayerPrefs.GetInt(IS_NEED_TUTORIAL, 0)==0; }
+        set { PlayerPrefs.SetInt(IS_NEED_TUTORIAL, 1); }
+    }
     public static TileViewData CurrentTileData
     {
         get { return JsonUtility.FromJson<TileViewData>(PlayerPrefs.GetString(CURRENT_TILE_DATA)); }
