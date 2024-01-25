@@ -16,7 +16,7 @@ public class StoreManager : MonoBehaviour
     TileViewData currentViewData;
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         currentViewData = new TileViewData();
         StoreTilePrefabData.BuyButtonPressed += TryBuying;
         StoreTilePrefabData.UseButtonPressed += TryUseTile;

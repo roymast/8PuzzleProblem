@@ -20,13 +20,15 @@ public static class GridLogic
         Shuffle(numbers);
         Shuffle(numbers);
         while (!IsSolvable(numbers, gridSize) && GetInvCount(numbers) > 2)
-            Shuffle(numbers);              
+            Shuffle(numbers);
         return numbers.ToArray();
     }    
 
     public static bool IsSolvable(List<int> numbers, int gridSize)
     {
         int countInversions = GetInvCount(numbers);
+        if(countInversions < 4) return false;
+
         if (gridSize % 2 != 0)
             return countInversions % 2 == 0;
         else

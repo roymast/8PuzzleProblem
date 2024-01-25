@@ -8,14 +8,7 @@ public class PuzzleGridGenerator : MonoBehaviour
 {    
     [SerializeField] Tile tilePrefab;
     [SerializeField] Tile[,] grid;
-    int _gridSize;
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            int[] lst = GridLogic.GetGrid(_gridSize);
-        }
-    }
+    int _gridSize;    
     
     // Start is called before the first frame update
     public Tile[,] Generate(int gridSize)

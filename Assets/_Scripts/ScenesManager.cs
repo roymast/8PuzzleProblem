@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public static string LastScene = "";
+    static int screenshotIndex = 0;
     private void Start()
     {
         if(LastScene == string.Empty)
@@ -47,5 +48,16 @@ public class ScenesManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                ScreenCapture.CaptureScreenshot($"Assets/ScreenShots/screen{screenshotIndex}.png");
+                screenshotIndex++;
+            }
+        }
     }
 }

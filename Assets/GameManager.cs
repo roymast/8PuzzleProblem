@@ -37,5 +37,5 @@ public class GameManager : MonoBehaviour
         IsGameEnd = true;
         IsGameRunning = false;
         PlayerData.AddPoints(GridSizeSelector.GridSize);//Add points as the size of the grid
-    }
+    }    
 }
