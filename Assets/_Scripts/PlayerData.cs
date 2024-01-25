@@ -30,32 +30,32 @@ public static class PlayerData
     }
     public static string CurrentStoreTileItem
     {
-        get { return PlayerPrefs.GetString(CURRENT_STORE_TILE) == "" ? "Default" : PlayerPrefs.GetString(CURRENT_STORE_TILE); }
+        get { return PlayerPrefs.GetString(CURRENT_STORE_TILE, "Default"); }
         set { PlayerPrefs.SetString(CURRENT_STORE_TILE, value); }
     }
     public static string StoreItemsBought
     {
-        get { return PlayerPrefs.GetString(STORE_ITEMS_BOUGHT) == "" ? "Default" : PlayerPrefs.GetString(STORE_ITEMS_BOUGHT); }
+        get { return PlayerPrefs.GetString(STORE_ITEMS_BOUGHT, "Default"); }
         set { PlayerPrefs.SetString(STORE_ITEMS_BOUGHT, value); }
     }
 
     public static bool MusicActive
     {
-        get { return PlayerPrefs.GetInt(IS_MUSIC_ACTIVE) == 1; }
+        get { return PlayerPrefs.GetInt(IS_MUSIC_ACTIVE, 1) == 1; }
         set { PlayerPrefs.SetInt(IS_MUSIC_ACTIVE, value ? 1 : 0); }
     }
     public static bool SFXActive
     {
-        get { return PlayerPrefs.GetInt(IS_SFX_ACTIVE) == 1; }
+        get { return PlayerPrefs.GetInt(IS_SFX_ACTIVE, 1) == 1; }
         set { PlayerPrefs.SetInt(IS_SFX_ACTIVE, value ? 1 : 0); }
     }
     public static int PlayerPoints
     {
-        get { return PlayerPrefs.GetInt(POINTS); }
+        get { return PlayerPrefs.GetInt(POINTS, 0); }
         set { if (value >= 0) PlayerPrefs.SetInt(POINTS, value); }
-    }    
-    public static int BestTimeVal { get { int.TryParse(PlayerPrefs.GetString(BEST_TIME).Split(SEPERATOR)[0], out int v); return v; } }
-    public static int BestMovesVal { get { int.TryParse(PlayerPrefs.GetString(BEST_MOVES).Split(SEPERATOR)[0], out int v); return v; } }
+    }        
+    public static int BestTimeVal { get { int.TryParse(PlayerPrefs.GetString(BEST_TIME, "0,0").Split(SEPERATOR)[0], out int v); return v; } }
+    public static int BestMovesVal { get { int.TryParse(PlayerPrefs.GetString(BEST_MOVES, "0,0").Split(SEPERATOR)[0], out int v); return v; } }
     public static void DeleteTimeAndMoves()
     {
         PlayerPrefs.DeleteKey(BEST_MOVES);
