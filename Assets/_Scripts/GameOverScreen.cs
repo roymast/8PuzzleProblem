@@ -22,7 +22,7 @@ public class GameOverScreen : MonoBehaviour
         GameOverCanvas.gameObject.SetActive(true);
         StartCoroutine(AnimateIncVal(TimerText, 0, time));
         StartCoroutine(AnimateIncVal(MovesText, 0, moves));
-        StartCoroutine(AnimatePointsInc(PointsAdded, 0, GridSizeSelector.GridSize));
+        StartCoroutine(AnimatePointsInc(PointsAdded, 0, GridSizeSelector.GridSize* GridSizeSelector.GridSize));
 
         bool isNewTimeBest = PlayerData.BestTimeVal > time || PlayerData.BestTimeVal == 0;
         bool isNewMovesBest = PlayerData.BestMovesVal > moves || PlayerData.BestMovesVal == 0;
@@ -30,7 +30,7 @@ public class GameOverScreen : MonoBehaviour
         NewMovesBestGO.SetActive(isNewMovesBest);
         PlayerData.UpdateBestMoves(time, moves);
         PlayerData.UpdateBestTime(time, moves);
-        PlayerData.AddPoints(GridSizeSelector.GridSize);
+        PlayerData.AddPoints(GridSizeSelector.GridSize* GridSizeSelector.GridSize);
     }
     IEnumerator AnimateIncVal(TextMeshProUGUI text, int startVal, int endVal)
     {
