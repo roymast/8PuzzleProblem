@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "901445010007",
+    "project_id": "puzzleproblem-477f5",
+    "storage_bucket": "puzzleproblem-477f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901445010007:android:8edab7adb75aff7b8a1912",
+        "android_client_info": {
+          "package_name": "com.RoyGames.PuzzleProblem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWP72u1qrB1rTF-UfDMKNHDAG1pTwUung"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
