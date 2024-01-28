@@ -27,13 +27,20 @@ public class PuzzleGridGenerator : MonoBehaviour
                 Tile newTile = Instantiate(tilePrefab, transform);
                 newTile.transform.localScale = new Vector2(tileSizeX, tileSizeY);
                 newTile.transform.position = new Vector2(y * tileSizeX, -x * tileSizeY);
-                newTile.Init(lst[x * gridSize + y], x, y, tileViewData);
+                int val = lst[x * gridSize + y];
+                newTile.Init(val, new Vector2(x, y), GetCorrectPos(val), tileViewData);
                 grid[x, y] = newTile;
             }
         }
         
         Camera.main.transform.position = new Vector3(((gridSize-1) / 2.0f) * tileSizeX, -((gridSize-1) / 2.0f) * tileSizeY, -10);
         return grid;
+    }   
+    public Vector2 GetCorrectPos(int val)
+    {
+        if (val == 0)
+            return new Vector2(_gridSize - 1, _gridSize - 1);
+        return new Vector2((val+1) / _gridSize, (val+1) % _gridSize);
     }
     public void SetTileSize()
     {        

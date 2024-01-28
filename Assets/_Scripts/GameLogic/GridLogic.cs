@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public static class GridLogic
 {
@@ -22,8 +23,7 @@ public static class GridLogic
         while (!IsSolvable(numbers, gridSize) && GetInvCount(numbers) > 2)
             Shuffle(numbers);
         return numbers.ToArray();
-    }    
-
+    }        
     public static bool IsSolvable(List<int> numbers, int gridSize)
     {
         int countInversions = GetInvCount(numbers);

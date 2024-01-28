@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public Tile[,] Grid;
+    public Tile[,] Grid;    
     [SerializeField] int gridSize;
     
     [SerializeField] PuzzleGridGenerator gridGenerator;    
@@ -16,12 +16,12 @@ public class GridManager : MonoBehaviour
     {
         gridSize = GridSizeSelector.GridSize;
         GridTileSwitcher.OnSwitchSucceeded += CheckForGameOver;
-        Grid = gridGenerator.Generate(gridSize);
+        Grid = gridGenerator.Generate(gridSize);        
     }
     private void OnDestroy()
     {
         GridTileSwitcher.OnSwitchSucceeded -= CheckForGameOver;
-    }
+    }    
     public void PrintGrid()
     {
         string s = "\n";

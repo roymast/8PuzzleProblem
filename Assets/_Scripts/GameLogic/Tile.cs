@@ -11,11 +11,13 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private int value;
     [SerializeField] private Vector2 pos;
+    [SerializeField] private Vector2 correctPos;
     public bool IsEmpty { get { return value == 0; } }
     public int Value { get { return value; } }
     [SerializeField] TextMeshPro TileText;
     [SerializeField] SpriteRenderer Rect;
-    [SerializeField] SpriteRenderer Fill;    
+    [SerializeField] SpriteRenderer Fill;
+    [SerializeField] SpriteRenderer CorrectPosIndicator;
 
     public static System.Action<Vector2> OnTilePress;
 
@@ -29,12 +31,14 @@ public class Tile : MonoBehaviour
             }
         }
     }
-    public void Init(int val, int x, int y, TileViewData tileViewData)
+    public void Init(int val, Vector2 InitPos, Vector2 corrctpos, TileViewData tileViewData)
     {
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
         value = val;
-        pos = new Vector2(x, y);
+        pos = new Vector2(InitPos.x, InitPos.y);
+        this.correctPos = corrctpos;        
+        UpdateCorrectPosIndicator();
         TileText.text = val == 0 ? "" : val.ToString();
 
         if (tileViewData != null)
@@ -47,6 +51,11 @@ public class Tile : MonoBehaviour
     public void UpdatePos(Vector2 newPos)
     {
         pos = newPos;
+        UpdateCorrectPosIndicator();
+    }    
+    public void UpdateCorrectPosIndicator()
+    {
+        CorrectPosIndicator.gameObject.SetActive(pos == correctPos);
     }
     
 }
