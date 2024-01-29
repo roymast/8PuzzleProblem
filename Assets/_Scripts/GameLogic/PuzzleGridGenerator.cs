@@ -40,7 +40,7 @@ public class PuzzleGridGenerator : MonoBehaviour
     {
         if (val == 0)
             return new Vector2(_gridSize - 1, _gridSize - 1);
-        return new Vector2((val+1) / _gridSize, (val+1) % _gridSize);
+        return new Vector2((val-1) / _gridSize, (val-1) % _gridSize);
     }
     public void SetTileSize()
     {        

@@ -15,7 +15,7 @@ public static class GridLogic
     {
         List<int> numbers = new List<int>();
         for (int i = 0; i < gridSize * gridSize; i++)
-            numbers.Add(i);
+            numbers.Add(i);        
         Shuffle(numbers);
         Shuffle(numbers);
         Shuffle(numbers);
